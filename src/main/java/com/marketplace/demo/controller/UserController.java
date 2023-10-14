@@ -19,7 +19,6 @@ public class UserController {
 
     @PostMapping
     public User registerUser(@RequestBody User user) throws EmailExistsException {
-        System.out.println("inside porint lin");
         return userService.insertUser(user);
     }
 }
