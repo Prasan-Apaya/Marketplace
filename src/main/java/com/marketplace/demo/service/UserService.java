@@ -20,4 +20,11 @@ public class UserService {
             return userRepository.save(user);
         }
     }
+
+    public boolean fetch(String userName, String password) {
+        if(userRepository.fetch(userName, password) == null) return false;
+        else{
+            return true;
+        }
+    }
 }
