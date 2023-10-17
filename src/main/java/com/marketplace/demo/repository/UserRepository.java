@@ -11,9 +11,9 @@ import java.util.List;
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
 
-    @Query("SELECT emailId FROM UserDetails u")
+    @Query("SELECT emailId FROM users u")
     List<String> getEmailIds();
 
-    @Query("SELECT u FROM UserDetails u WHERE u.userName = :userName and u.password= :password ")
+    @Query("SELECT u FROM users u WHERE u.userName = :userName and u.password= :password ")
     User fetch(@Param("userName") String userName, @Param("password") String password);
 }

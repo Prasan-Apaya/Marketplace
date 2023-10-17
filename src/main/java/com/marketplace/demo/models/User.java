@@ -2,7 +2,7 @@ package com.marketplace.demo.models;
 
 import jakarta.persistence.*;
 
-@Entity(name = "UserDetails")
+@Entity(name = "users")
 public class User {
     @Id
     @GeneratedValue(generator = "USER_SEQ", strategy = GenerationType.SEQUENCE)
