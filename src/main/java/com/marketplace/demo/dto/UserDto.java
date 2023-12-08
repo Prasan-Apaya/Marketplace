@@ -1,26 +1,28 @@
-package com.marketplace.demo.models;
+package com.marketplace.demo.dto;
 
-import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
-@Entity(name = "users")
-public class User {
-    @Id
-    @GeneratedValue(generator = "USER_SEQ", strategy = GenerationType.SEQUENCE)
-    @SequenceGenerator(name = "USER_SEQ", allocationSize = 1, sequenceName = "USER_SEQ")
-    private Long UserId;
-    @Column(name = "user_name", nullable = false)
+
+public class UserDto {
+
+    @NotNull(message = "User Name must not be blank")
     private String userName;
-    @Column(name = "password", nullable = false)
+
+    @NotNull(message = "Password must be between 4 to 15 characters")
+    @Size(min = 4, max = 15)
     private String password;
-    @Column(name = "email_id", nullable = false)
+
+    @NotNull(message = "Email must not be blank")
     private String emailId;
 
-    @Column(name = "phone_number", nullable = false)
+    @NotNull(message = "Phone Number must not be blank")
     private String phoneNumber;
 
-    public User() {}
+    public UserDto() {
+    }
 
-    public User(String userName, String password, String emailId, String phoneNumber) {
+    public UserDto(String userName, String password, String emailId, String phoneNumber) {
         this.userName = userName;
         this.password = password;
         this.emailId = emailId;
@@ -41,11 +43,6 @@ public class User {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
-    }
-
-
-    public Long getUserId() {
-        return UserId;
     }
 
     public String getUserName() {
